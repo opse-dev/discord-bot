@@ -4,7 +4,8 @@
   "description": "OPSE API",
   "main": "app.js",
   "scripts": {
-    "start": "forever start -c \"nodemon --exitcrash\" app.js"
+    "start": "forever start -c \"nodemon --exitcrash\" app.js",
+    "test": "nodemon ."
   },
   "engines": {
     "node": "12.x"
@@ -12,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
-    "discord-slash-commands-client": "^1.1.1",
     "discord.js": "^12.5.1",
     "dotenv-flow": "^3.2.0"
   }

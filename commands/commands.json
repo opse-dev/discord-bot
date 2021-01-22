@@ -1,26 +1,3 @@
 [
-    {
-        "id": "801761303114809344",
-        "server": "704553386724425789",
-        "name": "TEST",
-        "description": "TEST",
-        "options": [
-            {
-                "name": "action",
-                "description": "Yes or No",
-                "type": 3,
-                "required": true,
-                "choices": [
-                    {
-                        "name": "yes",
-                        "value": "yes"
-                    },
-                    {
-                        "name": "no",
-                        "value": "no"
-                    }
-                ]
-            }
-        ]
-    }
+
 ]
