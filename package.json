@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "forever start -c \"nodemon --exitcrash\" app.js",
-    "test": "nodemon ."
+    "test": "nodemon .",
+    "delete-cmd": "node delete-slash-command.js"
   },
   "engines": {
     "node": "12.x"
