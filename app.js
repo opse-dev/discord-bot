@@ -47,4 +47,5 @@ fs.readdir('./commands/slash-commands', async (err, files) => {
     console.log(' ');
 });
 
+global.client = client;
 client.login(BOT_TOKEN);
