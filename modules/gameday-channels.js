@@ -111,4 +111,4 @@ let run_schedule = () => [
 ]
 
 // schedule.scheduleJob('55 * * * * *', run_schedule);
-schedule.scheduleJob('00 09 * * *', checkGames);
+schedule.scheduleJob('00 09 * * *', run_schedule);
