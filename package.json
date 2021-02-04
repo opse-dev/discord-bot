@@ -1,10 +1,10 @@
 {
   "name": "opse-discord-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OPSE API",
   "main": "app.js",
   "scripts": {
-    "start": "forever start -c \"nodemon --exitcrash\" app.js",
+    "start": "forever .",
     "test": "nodemon .",
     "delete-cmd": "node delete-slash-command.js"
   },
