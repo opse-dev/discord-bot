@@ -6,17 +6,11 @@ const
     league_roleIDs = ["", "745728783667167425", "745729115482619945", "745729087716327425", "745729175242932235"],
     teamsInfo = require('../teamsInfo.json');
 
-let move_to_archive = () => {
+let delete_channels = () => {
     return new Promise(resolve => {
-        let prom = client.channels.cache.filter(c => c.parentID == "806861228114837554").map(c => {
-            if (c.type == "voice") c.delete();
-            else c.setParent("806861381487296542");
-        });
+        let prom = client.channels.cache.filter(c => c.parentID == "806861228114837554").map(c => { c.delete(); });
 
-        Promise.all(prom).then(() => {
-            let prom2 = client.channels.cache.filter(c => c.parentID == "806861381487296542").map(c => { c.lockPermissions(); });
-            Promise.all(prom2).then(() => {resolve()});
-        });
+        Promise.all(prom).then(() => {resolve()});
     });
 }
 
@@ -106,9 +100,9 @@ let create_channels = () => {
     });
 }
 
-let run_schedule = () => [
-    move_to_archive().then(setTimeout(create_channels, 2000))
-]
+let run_schedule = () => {
+    delete_channels().then(setTimeout(create_channels, 2000))
+}
 
-// schedule.scheduleJob('55 * * * * *', run_schedule);
+// schedule.scheduleJob('05 * * * * *', run_schedule);
 schedule.scheduleJob('00 09 * * *', run_schedule);
