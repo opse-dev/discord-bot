@@ -4,8 +4,7 @@
   "description": "OPSE API",
   "main": "app.js",
   "scripts": {
-    "start": "forever .",
-    "test": "nodemon .",
+    "start": "node .",
     "delete-cmd": "node delete-slash-command.js"
   },
   "engines": {
