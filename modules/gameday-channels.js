@@ -43,16 +43,34 @@ let sendDefaultMSG = (cID, game) => {
     let date = new Date();
 	let week = Math.floor(((date.getDate()-18)+(date.getMonth()+1))/7)+15;
 	let short_month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
-	let msg = `
-**Match Date:** ${short_month} ${date.getDate()}, ${date.getFullYear()}
-­**Home Team:** <@&${teamsInfo.filter(t => t.id == game.teamID1)[0].roleID}>
-**Away Team:** <@&${teamsInfo.filter(t => t.id == game.teamID2)[0].roleID}>
-­
-`;
 
-	sendMsgNoPings(cID, msg).then(() => {
-		sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}&download=true`)
-	})
+    if (game.leagueID == 2) {
+        let tourneycode_url = `http://api.opsesports.ca/tourneycode/${teamsInfo.filter(t => t.id == game.teamID1)[0].id}%20${teamsInfo.filter(t => t.id == game.teamID2)[0].id}%20${game.ID}%20${teamsInfo.filter(t => t.id == game.teamID2)[0].abbr}%20@%20${teamsInfo.filter(t => t.id == game.teamID1)[0].abbr}`;
+        if (!game.broadcast) tourneycode_url = `${tourneycode_url}.ALL`;
+
+        axios.get(tourneycode_url).then(res => {           
+            sendMsgNoPings(cID, `
+**Match Date:** ${short_month} ${date.getDate()}, ${date.getFullYear()}
+**Away Team:** <@&${teamsInfo.filter(t => t.id == game.teamID1)[0].roleID}>
+­**Home Team:** <@&${teamsInfo.filter(t => t.id == game.teamID2)[0].roleID}>
+
+**Tournament Code:** \`${res.data}\`
+­
+            `).then(() => {
+                sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}&download=true`);
+            });
+        });
+    }
+    else {
+        sendMsgNoPings(cID, `
+**Match Date:** ${short_month} ${date.getDate()}, ${date.getFullYear()}
+**Away Team:** <@&${teamsInfo.filter(t => t.id == game.teamID1)[0].roleID}>
+­**Home Team:** <@&${teamsInfo.filter(t => t.id == game.teamID2)[0].roleID}>
+­
+        `).then(() => {
+            sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}&download=true`);
+        });
+    }
 }
 
 let create_channels = () => {
