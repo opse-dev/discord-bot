@@ -79,90 +79,92 @@ let create_channels = () => {
         method: "GET",
         url: `http://api.opsesports.ca/games-today`,
     }).then(res => {
-        res.data.map(g => {
-            guild.channels.create(`${g.ID}-${leagues[g.leagueID]}-${teamsInfo.filter(t => t.id == g.teamID1)[0].abbr}-vs-${teamsInfo.filter(t => t.id == g.teamID2)[0].abbr}`, { type: 'text' }).then(c => {
-                c.setParent("806861228114837554");
-                c.overwritePermissions([
-                    {
-                        id: "745724034490302494",
-                        deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                    },
-                    {
-                        id: "806833582605467658",
-                        allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                    },
-                    {
-                        id: teamsInfo.filter(t => t.id == g.teamID1)[0].roleID,
-                        allow: ['VIEW_CHANNEL'],
-                        deny: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                    },
-                    {
-                        id: teamsInfo.filter(t => t.id == g.teamID2)[0].roleID,
-                        allow: ['VIEW_CHANNEL'],
-                        deny: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                    },
-                    {
-                        id: league_roleIDs[g.leagueID],
-                        allow: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                    },
-                ]);
-
-                c.setTopic(`Game Time: ${new Intl.DateTimeFormat('en', {
-                    timeZone: 'America/Toronto',
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                    hour: 'numeric',
-                    minute: 'numeric',
-                }).format(new Date(g.date))}`);
-                sendDefaultMSG(c.id, g);
-            }).catch(e => console.log(e));
-            
-            guild.channels.create(`[${leagues[g.leagueID].toLocaleUpperCase()}] ${teamsInfo.filter(t => t.id == g.teamID1)[0].name}`, { type: 'voice' }).then(async c => {
-                c.setParent("806861228114837554");
-                c.overwritePermissions([
-                    {
-                        id: "745724034490302494",
-                        deny: ['VIEW_CHANNEL'],
-                    },
-                    {
-                        id: "806833582605467658",
-                        allow: ['VIEW_CHANNEL'],
-                    },
-                    {
-                        id: teamsInfo.filter(t => t.id == g.teamID1)[0].roleID,
-                        allow: ['VIEW_CHANNEL'],
-                        deny: ['CONNECT'],
-                    },
-                    {
-                        id: league_roleIDs[g.leagueID],
-                        allow: ['CONNECT'],
-                    },
-                ]);
-            }).catch(e => console.log(e));
-            
-            guild.channels.create(`[${leagues[g.leagueID].toLocaleUpperCase()}] ${teamsInfo.filter(t => t.id == g.teamID2)[0].name}`, { type: 'voice' }).then(async c => {
-                c.setParent("806861228114837554");
-                c.overwritePermissions([
-                    {
-                        id: "745724034490302494",
-                        deny: ['VIEW_CHANNEL'],
-                    },
-                    {
-                        id: "806833582605467658",
-                        allow: ['VIEW_CHANNEL'],
-                    },
-                    {
-                        id: teamsInfo.filter(t => t.id == g.teamID2)[0].roleID,
-                        allow: ['VIEW_CHANNEL'],
-                        deny: ['CONNECT'],
-                    },
-                    {
-                        id: league_roleIDs[g.leagueID],
-                        allow: ['CONNECT'],
-                    },
-                ]);
-            }).catch(e => console.log(e));
+        res.data.forEach((g, i) => {
+            setTimeout(() => {
+                guild.channels.create(`${g.ID}-${leagues[g.leagueID]}-${teamsInfo.filter(t => t.id == g.teamID1)[0].abbr}-vs-${teamsInfo.filter(t => t.id == g.teamID2)[0].abbr}`, { type: 'text' }).then(c => {
+                    c.setParent("806861228114837554");
+                    c.overwritePermissions([
+                        {
+                            id: "745724034490302494",
+                            deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
+                        },
+                        {
+                            id: "806833582605467658",
+                            allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
+                        },
+                        {
+                            id: teamsInfo.filter(t => t.id == g.teamID1)[0].roleID,
+                            allow: ['VIEW_CHANNEL'],
+                            deny: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
+                        },
+                        {
+                            id: teamsInfo.filter(t => t.id == g.teamID2)[0].roleID,
+                            allow: ['VIEW_CHANNEL'],
+                            deny: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
+                        },
+                        {
+                            id: league_roleIDs[g.leagueID],
+                            allow: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
+                        },
+                    ]);
+    
+                    c.setTopic(`Game Time: ${new Intl.DateTimeFormat('en', {
+                        timeZone: 'America/Toronto',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                    }).format(new Date(g.date))}`);
+                    sendDefaultMSG(c.id, g);
+                }).catch(e => console.log(e));
+                
+                guild.channels.create(`[${leagues[g.leagueID].toLocaleUpperCase()}] ${teamsInfo.filter(t => t.id == g.teamID2)[0].name}`, { type: 'voice' }).then(async c => {
+                    c.setParent("806861228114837554");
+                    c.overwritePermissions([
+                        {
+                            id: "745724034490302494",
+                            deny: ['VIEW_CHANNEL'],
+                        },
+                        {
+                            id: "806833582605467658",
+                            allow: ['VIEW_CHANNEL'],
+                        },
+                        {
+                            id: teamsInfo.filter(t => t.id == g.teamID2)[0].roleID,
+                            allow: ['VIEW_CHANNEL'],
+                            deny: ['CONNECT'],
+                        },
+                        {
+                            id: league_roleIDs[g.leagueID],
+                            allow: ['CONNECT'],
+                        },
+                    ]);
+                }).catch(e => console.log(e));
+    
+                guild.channels.create(`[${leagues[g.leagueID].toLocaleUpperCase()}] ${teamsInfo.filter(t => t.id == g.teamID1)[0].name}`, { type: 'voice' }).then(async c => {
+                    c.setParent("806861228114837554");
+                    c.overwritePermissions([
+                        {
+                            id: "745724034490302494",
+                            deny: ['VIEW_CHANNEL'],
+                        },
+                        {
+                            id: "806833582605467658",
+                            allow: ['VIEW_CHANNEL'],
+                        },
+                        {
+                            id: teamsInfo.filter(t => t.id == g.teamID1)[0].roleID,
+                            allow: ['VIEW_CHANNEL'],
+                            deny: ['CONNECT'],
+                        },
+                        {
+                            id: league_roleIDs[g.leagueID],
+                            allow: ['CONNECT'],
+                        },
+                    ]);
+                }).catch(e => console.log(e));
+            }, i * 2500);
         });
     }).catch(e => {
         console.log(e.response.data);
