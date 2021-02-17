@@ -57,7 +57,7 @@ let sendDefaultMSG = (cID, game) => {
 **Tournament Code:** \`${res.data}\`
 ­
             `).then(() => {
-                sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}&download=true`);
+                sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}`);
             });
         });
     }
@@ -68,7 +68,7 @@ let sendDefaultMSG = (cID, game) => {
 ­**Home Team:** <@&${teamsInfo.filter(t => t.id == game.teamID2)[0].roleID}>
 ­
         `).then(() => {
-            sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}&download=true`);
+            sendMsgNoPings(cID, `http://api.opsesports.ca/image-generator/create/h2h?game=${leagues[game.leagueID]}&away_logo=${teamsInfo.filter(t => t.id == game.teamID1)[0].imgID}&home_logo=${teamsInfo.filter(t => t.id == game.teamID2)[0].imgID}&line1=${short_month}%20${date.getDate()},%20${date.getFullYear()}&line2=Regular+Season&line3=Week+${week}`);
         });
     }
 }
