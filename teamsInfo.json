@@ -40,7 +40,7 @@
     { "id": "410", "imgID": "011", "roleID": "745734062760525865", "channel": "779283959753998336", "abbr": "UO", "emoji": "<:GeeGees:755209490336579684>", "name": "uOttawa Gee-Gees Esports" },
     { "id": "411", "imgID": "012", "roleID": "745733996985712732", "channel": "779283959753998336", "abbr": "UofT", "emoji": "<:UofT:753346089330933833>", "name": "University of Toronto Esports" },
     { "id": "412", "imgID": "013", "roleID": "745732840179761203", "channel": "779283959753998336", "abbr": "WAT", "emoji": "<:Warriors:745741444135780512>", "name": "Waterloo Warriors" },
-    { "id": "413", "imgID": "016", "roleID": "745734047069765654", "channel": "779283959753998336", "abbr": "YU", "emoji": "<:Lions:753264967473692904>", "name": "York Lions" }
+    { "id": "413", "imgID": "016", "roleID": "745734047069765654", "channel": "779283959753998336", "abbr": "YU", "emoji": "<:Lions:753264967473692904>", "name": "York Lions" },
 
     { "id": "501", "imgID": "013", "roleID": "745732840179761203", "channel": "779283959753998336", "abbr": "WAT", "emoji": "<:Warriors:745741444135780512>", "name": "Waterloo Warriors" },
     { "id": "502", "imgID": "001", "roleID": "745728370519572604", "channel": "779283959753998336", "abbr": "CU", "emoji": "<:Ravens:745738497134035046>", "name": "Carleton Ravens" },
