@@ -3,8 +3,8 @@ const
     { BOT_TOKEN } = require('../config'),
     axios = require('axios'),
     schedule = require('node-schedule'),
-    leagues = ["", "hs", "lol", "ow", "rl"],
-    league_roleIDs = ["", "745728783667167425", "745729115482619945", "745729087716327425", "745729175242932235"],
+    leagues = ["", "hs", "lol", "ow", "rl", "hs", "lol", "ow", "rl"],
+    league_roleIDs = ["", "745728783667167425", "745729115482619945", "745729087716327425", "745729175242932235", "745728783667167425", "745729115482619945", "745729087716327425", "745729175242932235"],
     teamsInfo = require('../teamsInfo.json');
 
 let delete_channels = () => {
