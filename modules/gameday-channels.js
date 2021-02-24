@@ -44,7 +44,7 @@ let sendDefaultMSG = (cID, game) => {
 	let week = Math.floor(((date.getDate()-18)+(date.getMonth()+1))/7)+15;
 	let short_month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
 
-    if (game.leagueID == 2) {
+    if (game.leagueID == 2 || game.leagueID == 6) {
         let tourneycode_url = `http://api.opsesports.ca/tourneycode/${teamsInfo.filter(t => t.id == game.teamID1)[0].id}%20${teamsInfo.filter(t => t.id == game.teamID2)[0].id}%20${game.ID}%20${teamsInfo.filter(t => t.id == game.teamID2)[0].abbr}%20@%20${teamsInfo.filter(t => t.id == game.teamID1)[0].abbr}`;
         if (!game.broadcast) tourneycode_url = `${tourneycode_url}.ALL`;
 
