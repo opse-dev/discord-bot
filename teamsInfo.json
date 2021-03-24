@@ -42,6 +42,11 @@
     { "id": "412", "imgID": "013", "roleID": "745732840179761203", "channel": "779283959753998336", "abbr": "WAT", "emoji": "<:Warriors:745741444135780512>", "name": "Waterloo Warriors" },
     { "id": "413", "imgID": "016", "roleID": "745734047069765654", "channel": "779283959753998336", "abbr": "YU", "emoji": "<:Lions:753264967473692904>", "name": "York Lions" },
 
+    { "id": "500", "abbr": "TBD" },
+    { "id": "600", "abbr": "TBD" },
+    { "id": "700", "abbr": "TBD" },
+    { "id": "800", "abbr": "TBD" },
+    
     { "id": "501", "imgID": "013", "roleID": "745732840179761203", "channel": "779283959753998336", "abbr": "WAT", "emoji": "<:Warriors:745741444135780512>", "name": "Waterloo Warriors" },
     { "id": "502", "imgID": "001", "roleID": "745728370519572604", "channel": "779283959753998336", "abbr": "CU", "emoji": "<:Ravens:745738497134035046>", "name": "Carleton Ravens" },
     { "id": "503", "imgID": "004", "roleID": "745731966912954382", "channel": "779283959753998336", "abbr": "FAN", "emoji": "<:Falcons:745740040629387307>", "name": "Fanshawe Falcons" },
