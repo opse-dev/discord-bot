@@ -183,5 +183,5 @@ let run_schedule = () => {
     delete_channels().then(setTimeout(create_channels, 2000))
 }
 
-schedule.scheduleJob('35 * * * * *', run_schedule);
-// schedule.scheduleJob('00 09 * * *', run_schedule);
+// schedule.scheduleJob('35 * * * * *', run_schedule);
+schedule.scheduleJob('00 09 * * *', run_schedule);
